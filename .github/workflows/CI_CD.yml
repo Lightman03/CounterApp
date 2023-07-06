@@ -7,7 +7,7 @@ on:
 jobs:
   Deploy:
     runs-on: ubuntu-latest
-    environment: EC2-DEV
+    #environment: EC2-DEV
     
     steps:
       - uses: actions/checkout@v2 
