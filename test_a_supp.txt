@@ -1,0 +1,2 @@
+Fichier pour tester le déploiement lors de la modification de la branche master.
+A supprimer plus tard
