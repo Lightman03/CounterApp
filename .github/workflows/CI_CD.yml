@@ -30,7 +30,10 @@ jobs:
       - name: SSH into DO and run
         run: >
           cd ..
-          
+          ssh -i "private.key" ${USER_NAME}@${HOSTNAME}
+          "
+            echo "Bonjour"
+          "
           
           
       
