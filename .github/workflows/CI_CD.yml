@@ -30,7 +30,9 @@ jobs:
           
       - name: SSH into DO and run
         run: |
-          ssh -i  ~/.ssh/private.key ubuntu@ec2-35-180-196-172.eu-west-3.compute.amazonaws.com
+          cat ~/.ssh/known_hosts
+          ls -al ~/.ssh
+          ssh -i  ~/.ssh/private.key -o StrictHostKeyChecking=no ubuntu@ec2-35-180-196-172.eu-west-3.compute.amazonaws.com
           
       
           
