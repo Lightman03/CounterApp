@@ -29,7 +29,7 @@ jobs:
           
       - name: SSH into DO and run
         run: >
-          ssh -i ../private.key -o UserKnownHostsFile=/github/home/.ssh/known_hosts -tt ubuntu@35-180-196-172 "echo test > testfile1"
+          ssh -i ../private.key -o UserKnownHostsFile=/github/home/.ssh/known_hosts -tt ubuntu@ec2-35-180-196-172.eu-west-3.compute.amazonaws.com "echo test > testfile1"
           
           
       
