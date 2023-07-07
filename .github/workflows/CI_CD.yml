@@ -29,7 +29,7 @@ jobs:
           
       - name: SSH into DO and run
         run: >
-          ls .. -lah
+          ls CounterApp -lah
           ssh -i ../private.key ${USER_NAME}@${HOSTNAME}
           "
             ls -lah
