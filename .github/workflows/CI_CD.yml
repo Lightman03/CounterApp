@@ -1,5 +1,12 @@
 name: CI/CD counter app
 
+env:
+  PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+  HOSTNAME : ${{ secrets.HOSTNAME  }}
+  USER_NAME : ${{ secrets.USER_NAME  }}
+  AWS_REGION : ${{ secrets.AWS_DEFAULT_REGION  }}
+  SSH_KEY : ${{ secrets.SSH_KEY  }}
+
 on:
   push:
     branches: [ master ]
@@ -11,13 +18,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3 
-      - name: Deploy in EC2
-        env:
-            PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
-            HOSTNAME : ${{ secrets.HOSTNAME  }}
-            USER_NAME : ${{ secrets.USER_NAME  }}
-            AWS_REGION : ${{ secrets.AWS_DEFAULT_REGION  }}
-            SSH_KEY : ${{ secrets.SSH_KEY  }}
+      - name: SSH connexion
             
         run: |
           mkdir -p ~/.ssh/ && touch ~/.ssh/known_hosts
@@ -28,6 +29,9 @@ jobs:
           sudo chmod 400  ~/.ssh/private.key
           echo $PWD
           cat ~/.ssh/known_hosts
+          
+      - name: Deploy in EC2
+        run: |
           ls -al ~/.ssh
           echo "$USER_NAME@$HOSTNAME"
           ssh -i ~/.ssh/private.key -o ConnectTimeout=10 -o StrictHostKeyChecking=no $USER_NAME@$HOSTNAME '
