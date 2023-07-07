@@ -29,7 +29,10 @@ jobs:
           
       - name: SSH into DO and run
         run: >
-          ls .. -lah
+          ssh -i ../private.key ${USER_NAME}@${HOSTNAME}
+          "
+            ls
+          "
           
           
       
