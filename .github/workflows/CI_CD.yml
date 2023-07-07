@@ -29,7 +29,7 @@ jobs:
           
       - name: SSH into DO and run
         run: >
-          ls CounterApp -lah
+          ls .. -lah
           
           
       
