@@ -1,6 +1,5 @@
 name: CI/CD counter app
 
-
 on:
   push:
     branches: [ master ]
