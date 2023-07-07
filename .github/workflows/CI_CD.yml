@@ -30,7 +30,7 @@ jobs:
           cat ~/.ssh/known_hosts
           ls -al ~/.ssh
           echo "$USER_NAME@$HOSTNAME"
-          # ssh -i ~/.ssh/private.key -o ConnectTimeout=10 -o StrictHostKeyChecking=no $USER_NAME@$HOSTNAME
+          ssh -i ~/.ssh/private.key -o ConnectTimeout=10 -o StrictHostKeyChecking=no $USER_NAME@$HOSTNAME
           
       
           
