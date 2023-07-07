@@ -28,7 +28,6 @@ jobs:
           sudo chmod 400 ../private.key
           cd ~/.ssh
           echo $PWD          
-          ls -al
           
       - name: SSH into DO and run
         run: |
