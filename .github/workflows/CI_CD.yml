@@ -22,18 +22,18 @@ jobs:
             
         run: |
           mkdir -p ~/.ssh/ && touch ~/.ssh/known_hosts
-          ssh-keyscan "${{ secrets.HOSTNAME  }}" >> ~/.ssh/known_hosts
+          ssh-keyscan $HOSTNAME >> ~/.ssh/known_hosts
           eval $(ssh-agent)
-          ssh-add - <<< "${{ secrets.AWS_PRIVATE_KEY }}"
+          ssh-add - <<< $PRIVATE_KEY
           echo "$PRIVATE_KEY" >  ~/.ssh/private.key
           sudo chmod 400  ~/.ssh/private.key
-          echo $PWD
-          cat ~/.ssh/known_hosts
+          # echo $PWD
+          # cat ~/.ssh/known_hosts
           
       - name: Deploy in EC2
         run: |
-          ls -al ~/.ssh
-          echo "$USER_NAME@$HOSTNAME"
+          # ls -al ~/.ssh
+          # echo "$USER_NAME@$HOSTNAME"
           ssh -i ~/.ssh/private.key -o ConnectTimeout=10 -o StrictHostKeyChecking=no $USER_NAME@$HOSTNAME '
           echo "========================= connect ok !!!!! =============="
           cd /home/ubuntu/CounterApp &&
