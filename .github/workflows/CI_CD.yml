@@ -20,5 +20,4 @@ jobs:
             AWS_REGION : ${{ secrets.AWS_DEFAULT_REGION  }}
             
         run: |
-          echo "$PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
-          ssh -i "private_key.pem" -o UserKnownHostsFile=/home/.ssh/known_hosts -tt ${USER_NAME}@${HOSTNAME} "echo test > testfile1"
+          mkdir -p ~/.ssh/ && touch ~/.ssh/known_hosts
