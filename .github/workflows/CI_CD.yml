@@ -12,7 +12,7 @@ on:
     branches: [ master ]
 
 jobs:
-  SSH-Connexion:
+  Deploy:
     runs-on: ubuntu-latest
     environment: EC2-DEV
     
@@ -29,15 +29,8 @@ jobs:
           sudo chmod 400  ~/.ssh/private.key
           # echo $PWD
           # cat ~/.ssh/known_hosts
-    
-  Deploy:
-    needs: SSH-Connexion
-    runs-on: ubuntu-latest
-    environment: EC2-DEV
-      
-    steps:
-      - uses: actions/checkout@v3 
-      - name: Deploy EC2
+          
+      - name: Deploy in EC2
         run: |
           # ls -al ~/.ssh
           # echo "$USER_NAME@$HOSTNAME"
