@@ -32,8 +32,9 @@ jobs:
           echo "$USER_NAME@$HOSTNAME"
           ssh -i ~/.ssh/private.key -o ConnectTimeout=10 -o StrictHostKeyChecking=no $USER_NAME@$HOSTNAME
           echo "========================= connect ok !!!!! =============="
-          ls -al    
-      
-          
-          
-          
+          cd /home/ubuntu/CounterApp &&
+          git checkout master &&
+          git fetch --all &&
+          git reset --hard origin/master &&
+          git pull origin master &&
+          docker-compose -f docker-compose.prod.yml up -d --build 
