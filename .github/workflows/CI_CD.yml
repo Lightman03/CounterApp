@@ -25,3 +25,4 @@ jobs:
           ssh-keyscan "${{ secrets.HOSTNAME  }}" >> ~/.ssh/known_hosts
           eval $(ssh-agent)
           ssh-add - <<< "${{ secrets.SSH_KEY  }}"
+          
