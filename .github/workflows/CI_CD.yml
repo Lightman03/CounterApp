@@ -24,6 +24,8 @@ jobs:
           ssh-keyscan "${{ secrets.HOSTNAME  }}" >> ~/.ssh/known_hosts
           eval $(ssh-agent)
           cat ~/.ssh/known_hosts
+          echo ${{ secrets.HOSTNAME  }} > hostname
+          cat hostname
           
           
           
