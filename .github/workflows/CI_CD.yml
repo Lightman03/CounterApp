@@ -27,6 +27,13 @@ jobs:
           echo "$PRIVATE_KEY" > ../private.key
           sudo chmod 600 ../private.key
           
+      - name: SSH into DO and run
+        run: >
+          ssh -i ../private.key -tt ${USER_NAME}@${HOSTNAME}
+          "
+            ls -lah
+          "
+          
       
           
           
