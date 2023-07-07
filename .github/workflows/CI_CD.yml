@@ -25,5 +25,12 @@ jobs:
           eval $(ssh-agent)
           ssh-add - <<< "${{ secrets.AWS_PRIVATE_KEY }}"
           
+      - name: SSH into DO and run
+        run: >
+          ssh -i ../private.key -tt ${USER_NAME}@${HOSTNAME}
+          "
+            ls -lah
+          "
+          
           
           
